@@ -1,30 +1,51 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_call/core/navigation/app_routes.dart';
 import 'package:flutter_zoom_call/core/theme/app_theme.dart';
+import 'package:flutter_zoom_call/features/zoom_video_call/presentation/cubits/auth/auth_cubit.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/presentation/pages/login_page.dart';
+import 'package:flutter_zoom_call/utils/constants/string_constants.dart';
+import 'package:flutter_zoom_call/utils/widgets/loading_widget.dart';
 
 import 'features/zoom_video_call/presentation/pages/home_page.dart';
-import 'features/zoom_video_call/presentation/pages/video_call_page.dart';
+import 'features/zoom_video_call/presentation/pages/meeting_join_page.dart';
+import 'features/zoom_video_call/zoom_call_injection_container.dart' as di;
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await di.initializeZoomCallingFeature();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  MyApp({Key? key}) : super(key: key);
+  final authCubit = AuthCubit();
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Zoom',
+      title: ZoomStringConstants.appName,
       theme: ZoomAppTheme.darkTheme,
       routes: {
-        ZoomAppRouteNames.loginPage: (context) => const LoginPage(),
-        ZoomAppRouteNames.homePage: (context) => const HomePage(),
-        ZoomAppRouteNames.videoCallPage: (context) => const VideoCallPage(),
+        ZoomAppRouteNames.loginPage: (context) => LoginPage(),
+        ZoomAppRouteNames.homePage: (context) => HomePage(),
+        ZoomAppRouteNames.meetingJoinPage: (context) => MeetingJoinPage(),
       },
-      home: const LoginPage(),
+      home: StreamBuilder(
+        stream: authCubit.listenToAuthStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const LoadingWidget();
+          }
+          if (snapshot.hasData) {
+            return HomePage();
+          }
+
+          return LoginPage();
+        },
+      ),
     );
   }
 }

@@ -20,7 +20,7 @@ abstract class ZoomRepository {
   Future<bool> addMeetingToHistory(String meetingName);
 
   ///Jitsi meet
-  Future<Either<Failure, bool>> createNewMeeting(
+  Future<Either<Failure, bool>> createOrJoinMeeting(
       {required String roomName,
       required bool isAudioMuted,
       required bool isVideoMuted,

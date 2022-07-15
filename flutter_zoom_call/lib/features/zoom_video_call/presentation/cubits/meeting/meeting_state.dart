@@ -1,10 +1,16 @@
 part of 'meeting_cubit.dart';
 
-abstract class MeetingState extends Equatable {
-  const MeetingState();
-}
+@freezed
+class MeetingState with _$MeetingState {
+  const MeetingState._();
 
-class MeetingInitial extends MeetingState {
-  @override
-  List<Object> get props => [];
+  const factory MeetingState.init() = MeetingInitial;
+
+  const factory MeetingState.meetingLoading() = MeetingLoading;
+
+  const factory MeetingState.meetingSuccess({@Default(false) updateFlag}) =
+      MeetingSuccess;
+
+  const factory MeetingState.meetingFailure(String? failureMsg) =
+      MeetingFailure;
 }

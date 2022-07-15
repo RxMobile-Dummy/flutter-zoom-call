@@ -3,17 +3,17 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/failures/app_failures.dart';
 import '../repositories/zoom_repository.dart';
 
-class CreateNewMeetingUseCase {
+class CreateOrJoinMeetingUseCase {
   final ZoomRepository zoomRepository;
 
-  CreateNewMeetingUseCase({required this.zoomRepository});
+  CreateOrJoinMeetingUseCase({required this.zoomRepository});
 
   Future<Either<Failure, bool>> call(
       {required String roomName,
       required bool isAudioMuted,
       required bool isVideoMuted,
       String username = ''}) async {
-    return await zoomRepository.createNewMeeting(
+    return await zoomRepository.createOrJoinMeeting(
         isVideoMuted: isVideoMuted,
         isAudioMuted: isAudioMuted,
         roomName: roomName,

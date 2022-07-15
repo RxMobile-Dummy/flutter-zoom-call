@@ -26,9 +26,11 @@ class FirebaseAuthDataSourceImpl implements FirebaseAuthDataSource {
   @override
   Future<Either<Failure, bool>> signInWithGoogleAccount() async {
     bool isLoggedIn = false;
+    final GoogleSignInAccount? googleUser = await GoogleSignIn(
+            clientId:
+                '467071378165-mhiilnn8vn6dma3b1o2v33q5vi0imlk5.apps.googleusercontent.com')
+        .signIn();
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
 
@@ -53,11 +55,15 @@ class FirebaseAuthDataSourceImpl implements FirebaseAuthDataSource {
         isLoggedIn = true;
       }
     } on FirebaseAuthException catch (e) {
+      isLoggedIn = false;
       return Left(AuthFailure(failureMsg: e.message));
+    } catch (e) {
+      return Left(UnknownFailure(failureMsg: e.toString()));
     }
     return Right(isLoggedIn);
   }
 
+  @override
   Future<bool> signOut() async {
     bool isLoggedOut = false;
     try {

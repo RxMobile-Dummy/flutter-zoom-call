@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/data/data_sources/firebase_auth/firebase_auth_data_source.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/data/data_sources/firebase_firestore/firebase_firestore_data_source.dart';
+import 'package:flutter_zoom_call/features/zoom_video_call/data/data_sources/jitsi_meet_api/jitsi_data_source.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/domain/repositories/zoom_repository.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/presentation/cubits/auth/auth_cubit.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/presentation/cubits/meeting/meeting_cubit.dart';
@@ -9,9 +10,10 @@ import 'package:get_it/get_it.dart';
 
 import 'data/data_sources/firebase_auth/firebase_auth_data_source_impl.dart';
 import 'data/data_sources/firebase_firestore/firebase_firestore_data_source_impl.dart';
+import 'data/data_sources/jitsi_meet_api/jitsi_data_source_impl.dart';
 import 'data/repositories/zoom_repository_impl.dart';
 import 'domain/use_cases/add_meeting_to_history_usecase.dart';
-import 'domain/use_cases/create_new_meeting_usecase.dart';
+import 'domain/use_cases/create_or_join_meeting_usecase.dart';
 import 'domain/use_cases/get_current_user_usecase.dart';
 import 'domain/use_cases/get_meeting_history_usecase.dart';
 import 'domain/use_cases/listen_to_auth_change_usecase.dart';
@@ -26,6 +28,8 @@ Future<void> initializeZoomCallingFeature() async {
       () => FirebaseAuthDataSourceImpl(fireStore: sl(), auth: sl()));
   sl.registerLazySingleton<FirebaseFireStoreDataSource>(
       () => FirebaseFireStoreDataSourceImpl(fireStore: sl(), auth: sl()));
+  sl.registerLazySingleton<JitsiMeetDataSource>(
+      () => JitsiMeetDataSourceImpl(fireStore: sl(), auth: sl()));
 
 //repository
   sl.registerLazySingleton<ZoomRepository>(() => ZoomRepositoryImpl(
@@ -35,19 +39,19 @@ Future<void> initializeZoomCallingFeature() async {
       ));
 
 //use cases
-  sl.registerFactory<AddMeetingToHistoryUseCase>(
+  sl.registerLazySingleton<AddMeetingToHistoryUseCase>(
       () => AddMeetingToHistoryUseCase(zoomRepository: sl()));
-  sl.registerFactory<CreateNewMeetingUseCase>(
-      () => CreateNewMeetingUseCase(zoomRepository: sl()));
-  sl.registerFactory<GetCurrentUserUseCase>(
+  sl.registerLazySingleton<CreateOrJoinMeetingUseCase>(
+      () => CreateOrJoinMeetingUseCase(zoomRepository: sl()));
+  sl.registerLazySingleton<GetCurrentUserUseCase>(
       () => GetCurrentUserUseCase(zoomRepository: sl()));
-  sl.registerFactory<GetMeetingHistoryUseCase>(
+  sl.registerLazySingleton<GetMeetingHistoryUseCase>(
       () => GetMeetingHistoryUseCase(zoomRepository: sl()));
-  sl.registerFactory<ListenToAuthChangeUseCase>(
+  sl.registerLazySingleton<ListenToAuthChangeUseCase>(
       () => ListenToAuthChangeUseCase(zoomRepository: sl()));
-  sl.registerFactory<SignInWithGoogleAccountUseCase>(
+  sl.registerLazySingleton<SignInWithGoogleAccountUseCase>(
       () => SignInWithGoogleAccountUseCase(zoomRepository: sl()));
-  sl.registerFactory<SignOutUseCase>(
+  sl.registerLazySingleton<SignOutUseCase>(
       () => SignOutUseCase(zoomRepository: sl()));
 
 //cubit

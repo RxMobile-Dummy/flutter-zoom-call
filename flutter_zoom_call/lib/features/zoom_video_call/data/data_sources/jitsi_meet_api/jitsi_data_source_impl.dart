@@ -13,7 +13,7 @@ class JitsiMeetDataSourceImpl implements JitsiMeetDataSource {
   JitsiMeetDataSourceImpl({required this.auth, required this.fireStore});
 
   @override
-  Future<Either<Failure, bool>> createNewMeeting(
+  Future<Either<Failure, bool>> createOrJoinMeeting(
       {required String roomName,
       required bool isAudioMuted,
       required bool isVideoMuted,

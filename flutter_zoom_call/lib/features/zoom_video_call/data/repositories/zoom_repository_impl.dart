@@ -24,12 +24,12 @@ class ZoomRepositoryImpl implements ZoomRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> createNewMeeting(
+  Future<Either<Failure, bool>> createOrJoinMeeting(
       {required String roomName,
       required bool isAudioMuted,
       required bool isVideoMuted,
       String username = ''}) async {
-    return await jitsiMeetDataSource.createNewMeeting(
+    return await jitsiMeetDataSource.createOrJoinMeeting(
         roomName: roomName,
         isAudioMuted: isAudioMuted,
         isVideoMuted: isVideoMuted);
