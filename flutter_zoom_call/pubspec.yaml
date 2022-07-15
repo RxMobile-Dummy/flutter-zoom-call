@@ -20,12 +20,16 @@ dependencies:
   firebase_core: ^1.19.2
   firebase_auth: ^3.4.2
   cloud_firestore: ^3.3.0
+
+  #sign in
   google_sign_in: ^5.4.0
 
 
   #state management
   flutter_bloc: ^8.0.1
-  equatable: ^2.0.3
+  freezed: ^1.1.0
+  equatable: any
+  freezed_annotation: ^1.1.0
 
   #error handling
   dartz: ^0.10.1
@@ -47,6 +51,7 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
+  build_runner: any
 
 flutter:
 

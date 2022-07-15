@@ -1,5 +1,5 @@
 class ZoomAppRouteNames {
   static const loginPage = '/login';
   static const homePage = '/home';
-  static const videoCallPage = '/video-call';
+  static const meetingJoinPage = '/join-meeting';
 }
