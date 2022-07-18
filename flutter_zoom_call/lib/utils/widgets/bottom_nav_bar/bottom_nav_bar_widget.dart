@@ -30,7 +30,7 @@ class BottomNavBarWidget extends StatelessWidget {
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(
-                  Icons.comment_bank,
+                  Icons.video_camera_front,
                 ),
                 label: 'Meet & Chat',
               ),

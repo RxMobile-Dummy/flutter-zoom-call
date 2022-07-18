@@ -1,9 +1,8 @@
+import 'dart:math';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_zoom_call/features/zoom_video_call/domain/use_cases/add_meeting_to_history_usecase.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/domain/use_cases/create_or_join_meeting_usecase.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/domain/use_cases/get_current_user_usecase.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/domain/use_cases/get_meeting_history_usecase.dart';
@@ -12,6 +11,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 
 import '../../../zoom_call_injection_container.dart';
+
 part 'meeting_cubit.freezed.dart';
 part 'meeting_state.dart';
 
@@ -23,8 +23,6 @@ class MeetingCubit extends Cubit<MeetingState> {
       sl<GetCurrentUserUseCase>();
   final CreateOrJoinMeetingUseCase createNewMeetingUseCase =
       sl<CreateOrJoinMeetingUseCase>();
-  final AddMeetingToHistoryUseCase addMeetingToHistoryUseCase =
-      sl<AddMeetingToHistoryUseCase>();
   final GetMeetingHistoryUseCase getMeetingHistoryUseCase =
       sl<GetMeetingHistoryUseCase>();
 
@@ -33,12 +31,13 @@ class MeetingCubit extends Cubit<MeetingState> {
   late TextEditingController meetingIdController;
   late TextEditingController nameController;
 
-  Future<void> joinMeeting() async {
+  Future<void> createOrJoinMeeting({required bool isNewMeeting}) async {
     try {
+      var random = Random();
+      String roomName = (random.nextInt(10000000) + 10000000).toString();
       emit(const MeetingLoading());
-      await addMeetingToHistoryUseCase.call(meetingIdController.text);
       final response = await createNewMeetingUseCase.call(
-        roomName: meetingIdController.text,
+        roomName: isNewMeeting ? roomName : meetingIdController.text,
         isAudioMuted: isAudioMuted,
         isVideoMuted: isVideoMuted,
         username: nameController.text,
@@ -70,10 +69,6 @@ class MeetingCubit extends Cubit<MeetingState> {
   void onVideoMuted(bool val) {
     isVideoMuted = val;
     notifyToChangeUi();
-  }
-
-  void disposeAllStreams() {
-    JitsiMeet.removeAllListeners();
   }
 
   void notifyToChangeUi() {
