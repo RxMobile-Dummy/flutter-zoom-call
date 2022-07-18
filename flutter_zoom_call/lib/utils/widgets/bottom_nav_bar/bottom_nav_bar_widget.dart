@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_call/core/theme/app_colors.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/presentation/pages/account_page.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/presentation/pages/meeting_history_page.dart';
+import 'package:flutter_zoom_call/utils/constants/string_constants.dart';
 import 'package:flutter_zoom_call/utils/widgets/bottom_nav_bar/cubit/bottom_navbar_cubit.dart';
 
 import '../../../features/zoom_video_call/presentation/pages/meeting_page.dart';
@@ -32,19 +33,19 @@ class BottomNavBarWidget extends StatelessWidget {
                 icon: Icon(
                   Icons.video_camera_front,
                 ),
-                label: 'Meet & Chat',
+                label: ZoomStringConstants.meetAndChatText,
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.lock_clock,
                 ),
-                label: 'Meetings',
+                label: ZoomStringConstants.meetingText,
               ),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.person_outline,
                 ),
-                label: 'Account',
+                label: ZoomStringConstants.accountText,
               ),
             ],
           );
