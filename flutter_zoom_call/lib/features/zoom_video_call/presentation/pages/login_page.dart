@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               ZoomStringConstants.startOrJoinMeetingText,
               style: TextStyle(
                 fontSize: 24,

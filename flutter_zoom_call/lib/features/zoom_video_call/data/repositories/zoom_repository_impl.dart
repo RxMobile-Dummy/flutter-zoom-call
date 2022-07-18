@@ -19,11 +19,6 @@ class ZoomRepositoryImpl implements ZoomRepository {
       required this.jitsiMeetDataSource});
 
   @override
-  Future<bool> addMeetingToHistory(String meetingName) async {
-    return await fireStoreDataSource.addMeetingToHistory(meetingName);
-  }
-
-  @override
   Future<Either<Failure, bool>> createOrJoinMeeting(
       {required String roomName,
       required bool isAudioMuted,
