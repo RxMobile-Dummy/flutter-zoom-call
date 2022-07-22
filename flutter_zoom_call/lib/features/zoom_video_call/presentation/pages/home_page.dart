@@ -12,19 +12,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ZoomAppColors.backgroundColor,
-        elevation: 0,
-        title: const Text(ZoomStringConstants.appName),
-        centerTitle: true,
+    return SafeArea(
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          backgroundColor: ZoomAppColors.backgroundColor,
+          elevation: 0,
+          title: const Text(ZoomStringConstants.appName),
+          centerTitle: true,
+        ),
+        body: BlocBuilder<BottomNavbarCubit, BottomNavBarState>(
+            bloc: cubit,
+            builder: (context, state) {
+              return bottomBarPageList[cubit.currentIndex];
+            }),
+        bottomNavigationBar: BottomNavBarWidget(navBarCubit: cubit),
       ),
-      body: BlocBuilder<BottomNavbarCubit, BottomNavBarState>(
-          bloc: cubit,
-          builder: (context, state) {
-            return bottomBarPageList[cubit.currentIndex];
-          }),
-      bottomNavigationBar: BottomNavBarWidget(navBarCubit: cubit),
     );
   }
 }

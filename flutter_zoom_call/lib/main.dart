@@ -54,8 +54,10 @@ class MyApp extends StatelessWidget {
                       return LoginPage();
                     },
                   )
-                : CustomErrorWidget(
-                    errorMsg: ZoomStringConstants.errorLoadingPageText);
+                : snapshot.hasError
+                    ? CustomErrorWidget(
+                        errorMsg: ZoomStringConstants.errorLoadingPageText)
+                    : LoadingWidget();
           },
         ));
   }
