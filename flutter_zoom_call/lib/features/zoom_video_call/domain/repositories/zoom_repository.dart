@@ -17,8 +17,6 @@ abstract class ZoomRepository {
   ///firebase fireStore
   Stream<QuerySnapshot<Map<String, dynamic>>> getMeetingHistoryOfUser();
 
-  Future<bool> addMeetingToHistory(String meetingName);
-
   ///Jitsi meet
   Future<Either<Failure, bool>> createOrJoinMeeting(
       {required String roomName,

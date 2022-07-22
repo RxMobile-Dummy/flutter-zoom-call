@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_zoom_call/core/theme/app_colors.dart';
+import 'package:flutter_zoom_call/core/theme/app_text_styles.dart';
 
 class CustomErrorWidget extends StatelessWidget {
   const CustomErrorWidget({Key? key, required this.errorMsg}) : super(key: key);
@@ -8,7 +9,9 @@ class CustomErrorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Text(errorMsg,
-            style: const TextStyle(color: ZoomAppColors.buttonColor)));
+        child: Material(
+      child: Text(errorMsg,
+          style: ZoomAppTextStyles.labelStyle.copyWith(color: Colors.white)),
+    ));
   }
 }

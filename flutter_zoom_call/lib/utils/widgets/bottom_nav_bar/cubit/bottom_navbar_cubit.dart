@@ -3,7 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:meta/meta.dart';
 
 part 'bottom_navbar_cubit.freezed.dart';
-
 part 'bottom_navbar_state.dart';
 
 class BottomNavbarCubit extends Cubit<BottomNavBarState> {

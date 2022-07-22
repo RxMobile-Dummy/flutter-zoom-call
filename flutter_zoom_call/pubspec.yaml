@@ -20,6 +20,7 @@ dependencies:
   firebase_core: ^1.19.2
   firebase_auth: ^3.4.2
   cloud_firestore: ^3.3.0
+  firebase_remote_config: ^2.0.12
 
   #sign in
   google_sign_in: ^5.4.0
@@ -28,7 +29,6 @@ dependencies:
   #state management
   flutter_bloc: ^8.0.1
   freezed: ^1.1.0
-  equatable: any
   freezed_annotation: ^1.1.0
 
   #error handling
@@ -51,7 +51,13 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^1.0.0
-  build_runner: any
+  build_runner: 2.2.0
+  flutter_launcher_icons: ^0.9.3
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/img/video_call_logo.png"
+
 
 flutter:
 
@@ -60,6 +66,7 @@ flutter:
 
   assets:
     - assets/img/onboarding.jpg
+    - assets/img/video_call_logo.png
 
 
   # fonts:

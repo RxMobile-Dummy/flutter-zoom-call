@@ -6,6 +6,8 @@ class AuthState with _$AuthState {
 
   const factory AuthState.init() = AuthInitial;
 
+  const factory AuthState.authenticating() = Authenticating;
+
   const factory AuthState.authenticated() = Authenticated;
 
   const factory AuthState.unAuthenticated(String? failureMsg) = UnAuthenticated;

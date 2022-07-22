@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_zoom_call/utils/extensions/sizedbox/sized_box_extensions.dart';
 
 import '../../core/theme/app_colors.dart';
 
@@ -22,7 +23,7 @@ class HomeMeetingButtonWidget extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               color: ZoomAppColors.buttonColor,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(100),
               boxShadow: [
                 BoxShadow(
                   blurRadius: 10,
@@ -39,7 +40,7 @@ class HomeMeetingButtonWidget extends StatelessWidget {
               size: 30,
             ),
           ),
-          const SizedBox(height: 10),
+          10.verticalSpace,
           Text(
             text,
             style: const TextStyle(
