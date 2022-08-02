@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_zoom_call/core/config/firebase_remote_config.dart';
 import 'package:flutter_zoom_call/core/navigation/app_routes.dart';
 import 'package:flutter_zoom_call/core/theme/app_theme.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/presentation/cubits/auth/auth_cubit.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_zoom_call/utils/constants/string_constants.dart';
 import 'package:flutter_zoom_call/utils/widgets/custom_error_widget.dart';
 import 'package:flutter_zoom_call/utils/widgets/loading_widget.dart';
 
+import 'config/firebase_remote_config.dart';
 import 'features/zoom_video_call/presentation/pages/home_page.dart';
 import 'features/zoom_video_call/presentation/pages/meeting_join_page.dart';
 import 'features/zoom_video_call/zoom_call_injection_container.dart' as di;
