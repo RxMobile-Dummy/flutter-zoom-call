@@ -4,11 +4,11 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 
 # Features
 
-##(1) Google sign-in:
+## Google sign-in:
 * Login into app via gmail account
 
 
-##(2) Video Calling:
+## (2) Video Calling::
 
 ### Before joining:
 * Join via link of meeting/join via meeting id from app
