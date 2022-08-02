@@ -73,6 +73,7 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 
 # Folder Structure
 
+flutter-zoom-call
 
 ```sh
 ├── lib
