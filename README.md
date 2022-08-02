@@ -11,7 +11,7 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 * Login into app via gmail account
 
 
-## (2) Video Calling :
+## (2) Join or Create Meeting :
 
 ### Before joining:
 * Join via link of meeting/join via meeting id from app
@@ -38,6 +38,11 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 * Help will redirect to website
 * Toggle views of participants
 * Allow/Reject lobby’s participants
+
+
+
+(3) Meeting History :
+* User can see date and meeting id of every meeting created/joined by user from meeting history page.
 
 
 
