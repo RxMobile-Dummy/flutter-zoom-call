@@ -8,9 +8,9 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 * Login into app via gmail account
 
 
-## Video Calling:
+# Video Calling:
 
-# Before joining:
+### Before joining:
 * Join via link of meeting/join via meeting id from app
 * Edit name before joining
 * Meeting id validation
@@ -18,7 +18,7 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 * Waiting lobby appears if lobby is enabled in that meeting
 *  Password is needed if meeting password had been set
 
-# After joining:
+### After joining:
 * Detects no of participants and if there is password set for the meeting 
 * Supports PIP mode
 * Invite others via link (gmail,whtsapp,SMS etc)
