@@ -28,6 +28,7 @@ class AuthCubit extends Cubit<AuthState> {
   late User? user;
 
   Future<void> signInViaGoogleAccount() async {
+    emit(Authenticating());
     final response = await signInWithGoogleAccountUseCase.call();
     response.fold((failure) {
       debugPrint(failure.toString());

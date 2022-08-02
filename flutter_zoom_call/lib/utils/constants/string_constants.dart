@@ -18,6 +18,7 @@ class ZoomStringConstants {
   static const roomNameText = 'Name';
   static const muteAudioBtnText = 'Mute Audio';
   static const turnOffVideoText = 'Turn Off My Video';
+  static const meetingIdError = 'Please enter valid meeting Id';
 
   //history page
   static const noHistoryText = 'No History yet.';

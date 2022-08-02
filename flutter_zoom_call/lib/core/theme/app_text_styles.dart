@@ -47,4 +47,9 @@ class ZoomAppTextStyles {
     fontSize: 16,
     fontWeight: FontWeight.w700,
   );
+
+  static const loginTextStyle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
 }

@@ -8,8 +8,8 @@ class MeetingState with _$MeetingState {
 
   const factory MeetingState.meetingLoading() = MeetingLoading;
 
-  const factory MeetingState.meetingSuccess({@Default(false) updateFlag}) =
-      MeetingSuccess;
+  const factory MeetingState.meetingSuccess(
+      {@Default(false) updateFlag, String? errorMsg}) = MeetingSuccess;
 
   const factory MeetingState.meetingFailure(String? failureMsg) =
       MeetingFailure;
