@@ -71,4 +71,51 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 
 
 
+# Folder Structure
+
+
+
+├── lib
+    │   
+    ├── core   
+    │   │── failure
+    │   ├── navigation
+    │   ├── theme
+    │   
+    ├── config   
+    │   ├── firebase_remote_config.dart
+    │            
+    ├── features  
+    │   │   
+    │   ├── zoom_video_call
+    │      │   
+    │      │ 
+    │      ├── data
+    │      │   ├── data_sources
+    │      │   ├── models
+    │      │   ├── repositories
+    │      │ 
+    │      │ 
+    │      ├── domain
+    │      │   ├── repositories
+    │      │   ├── use_cases
+    │      │    
+    │      │   
+    │      ├── presentation
+    │      │   ├── cubits
+    │      │   ├── pages
+    │      │    
+    │      ├── injection_container
+    │         
+    │       
+    ├─── utils
+    │      ├── constants
+    │      ├── extensions
+    │      ├── widgets
+    │    
+    ├──────── main.dart     
+
+
+
+
 
