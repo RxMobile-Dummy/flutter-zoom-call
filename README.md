@@ -41,8 +41,32 @@ Zoom like application(android and ios) with backend in firebase and Jitsi for vi
 
 
 
-(3) Meeting History :
+## (3) Meeting History :
 * User can see date and meeting id of every meeting created/joined by user from meeting history page.
+
+
+
+
+
+# Packages
+
+ - jitsi_meet : for video calling feature
+ 
+ - firebase_auth & google_sign_in : for authenticating user via google gmail account
+
+ - cloud_firestore : for storing history of meeting and userdata in firebase firestore
+
+ - firebase_remote_config : for fetching clientId in app from firebase
+
+ - flutter_bloc : for managing the state of widgets
+
+ - freezed & freezed_annotation : for generating freezed classes of states
+
+ - dartz  : for custom error handling
+
+ - get_it : for dependency injection 
+
+ - intl : for date time format and conversions
 
 
 
