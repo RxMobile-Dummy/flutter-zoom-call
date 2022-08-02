@@ -2,13 +2,16 @@
 
 Zoom like application(android and ios) with backend in firebase and Jitsi for video conferencing in flutter.
 
+
+
+
 # Features
 
-## Google sign-in:
+## (1) Google sign-in :
 * Login into app via gmail account
 
 
-## (2) Video Calling::
+## (2) Video Calling :
 
 ### Before joining:
 * Join via link of meeting/join via meeting id from app
