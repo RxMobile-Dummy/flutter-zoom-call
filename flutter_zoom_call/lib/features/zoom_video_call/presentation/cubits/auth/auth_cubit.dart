@@ -11,7 +11,6 @@ import '../../../domain/use_cases/get_current_user_usecase.dart';
 import '../../../zoom_call_injection_container.dart';
 
 part 'auth_cubit.freezed.dart';
-
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {

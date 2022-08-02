@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zoom_call/core/theme/app_colors.dart';
+import 'package:flutter_zoom_call/utils/constants/string_constants.dart';
 import 'package:flutter_zoom_call/utils/widgets/bottom_nav_bar/cubit/bottom_navbar_cubit.dart';
 
 import '../../../../utils/widgets/bottom_nav_bar/bottom_nav_bar_widget.dart';
@@ -15,7 +16,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ZoomAppColors.backgroundColor,
         elevation: 0,
-        title: const Text('Meet & Chat'),
+        title: const Text(ZoomStringConstants.appName),
         centerTitle: true,
       ),
       body: BlocBuilder<BottomNavbarCubit, BottomNavBarState>(

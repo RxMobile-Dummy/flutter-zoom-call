@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/data/data_sources/firebase_auth/firebase_auth_data_source.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/data/data_sources/firebase_firestore/firebase_firestore_data_source.dart';
 import 'package:flutter_zoom_call/features/zoom_video_call/data/data_sources/jitsi_meet_api/jitsi_data_source.dart';
@@ -12,7 +13,6 @@ import 'data/data_sources/firebase_auth/firebase_auth_data_source_impl.dart';
 import 'data/data_sources/firebase_firestore/firebase_firestore_data_source_impl.dart';
 import 'data/data_sources/jitsi_meet_api/jitsi_data_source_impl.dart';
 import 'data/repositories/zoom_repository_impl.dart';
-import 'domain/use_cases/add_meeting_to_history_usecase.dart';
 import 'domain/use_cases/create_or_join_meeting_usecase.dart';
 import 'domain/use_cases/get_current_user_usecase.dart';
 import 'domain/use_cases/get_meeting_history_usecase.dart';
@@ -23,7 +23,7 @@ import 'domain/use_cases/sign_out_usecase.dart';
 final sl = GetIt.instance;
 
 Future<void> initializeZoomCallingFeature() async {
-//data source
+//data sources
   sl.registerLazySingleton<FirebaseAuthDataSource>(
       () => FirebaseAuthDataSourceImpl(fireStore: sl(), auth: sl()));
   sl.registerLazySingleton<FirebaseFireStoreDataSource>(
@@ -31,7 +31,7 @@ Future<void> initializeZoomCallingFeature() async {
   sl.registerLazySingleton<JitsiMeetDataSource>(
       () => JitsiMeetDataSourceImpl(fireStore: sl(), auth: sl()));
 
-//repository
+//repositories
   sl.registerLazySingleton<ZoomRepository>(() => ZoomRepositoryImpl(
         jitsiMeetDataSource: sl(),
         fireStoreDataSource: sl(),
@@ -39,8 +39,7 @@ Future<void> initializeZoomCallingFeature() async {
       ));
 
 //use cases
-  sl.registerLazySingleton<AddMeetingToHistoryUseCase>(
-      () => AddMeetingToHistoryUseCase(zoomRepository: sl()));
+
   sl.registerLazySingleton<CreateOrJoinMeetingUseCase>(
       () => CreateOrJoinMeetingUseCase(zoomRepository: sl()));
   sl.registerLazySingleton<GetCurrentUserUseCase>(
@@ -54,11 +53,12 @@ Future<void> initializeZoomCallingFeature() async {
   sl.registerLazySingleton<SignOutUseCase>(
       () => SignOutUseCase(zoomRepository: sl()));
 
-//cubit
+//cubits
   sl.registerFactory<AuthCubit>(() => AuthCubit());
   sl.registerFactory<MeetingCubit>(() => MeetingCubit());
 
 //external
   sl.registerLazySingleton(() => FirebaseAuth.instance);
   sl.registerLazySingleton(() => FirebaseFirestore.instance);
+  sl.registerLazySingleton(() => FirebaseRemoteConfig.instance);
 }
